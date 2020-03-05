@@ -15,7 +15,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: |
-           sudo modprobe nbd; sudo modprobe nvme; sudo modprobe nvmet
+           sudo modprobe { nbd, nvme, nvmet, xfs }
+           echo 1024 | sudo tee /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages 1>/dev/null
            cat /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
            docker run --privileged -v /dev:/dev:rw -v /dev/shm:/dev/shm:rw -v /dev/hugepages:/dev/hugepages:rw --network host --rm hello-world
            for d in */; do
