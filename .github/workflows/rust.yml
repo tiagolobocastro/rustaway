@@ -15,6 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: |
+           cat /proc/modules
            docker run --privileged -v /dev:/dev:rw -v /dev/shm:/dev/shm:rw -v /dev/hugepages:/dev/hugepages:rw --network host --rm hello-world
            for d in */; do
             pushd "$d"
