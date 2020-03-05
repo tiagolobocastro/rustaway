@@ -178,6 +178,8 @@ fn test_closure_cache() {
     assert_eq!(first, second, "Testing that the cacher closure caches the values!");
 }
 
+bug bug
+
 fn single() {
 
     let same = |same| { same };
