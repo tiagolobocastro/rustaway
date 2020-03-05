@@ -15,9 +15,15 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: |
-           cd hello
-           cargo build --verbose
+           for d in */; do
+            pushd "$d"
+            cargo build --verbose
+            popd
+           done
     - name: Run tests
       run: |
-           cd hello
-           cargo test --verbose
+           for d in */; do
+            pushd "$d"
+            cargo test --verbose
+            popd
+           done
